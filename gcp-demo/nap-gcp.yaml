@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nap-agent-deployment-dvir
+  labels:
+    app: nap-agent-dvir
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nap-agent-dvir
+  template:
+    metadata:
+      labels:
+        app: nap-agent-dvir
+    spec:
+      containers:
+      - name: nap-agent-dvir
+        image: dvirus89/app-protect:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: ENV_CONTROLLER_INSTANCE_GROUP
+          value: "gcp-app"
+        - name: ENV_CONTROLLER_USER
+          value: "stam.user@f5.com"
+        - name: ENV_CONTROLLER_PASSWORD
+          value: "xxxxxxxxx"
+        ports:
+        - containerPort: 80
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nap-agent-service-dvir
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: nap-agent-dvir
