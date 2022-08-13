@@ -639,7 +639,7 @@ def create_app5_petstore(session):
         print("GW5 Created")
     time.sleep(5)
 
-    # Create App1
+    # Create App5
     endpoint = "/api/v1/services/environments/prod/apps/gcp-demo-app5"
     endpoint = CONTROLLER_FQDN+endpoint
     payload = """
@@ -662,7 +662,7 @@ def create_app5_petstore(session):
     time.sleep(5)
 
     # 
-    # Create App Comp 1
+    # Create App Comp 5
     #
     endpoint = "/api/v1/services/environments/prod/apps/gcp-demo-app5/components/gcp-demo-app5-comp1"
     endpoint = CONTROLLER_FQDN+endpoint
