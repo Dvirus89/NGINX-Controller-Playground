@@ -723,6 +723,21 @@ def create_app5_petstore(session):
             "waf": {
                 "isEnabled": true
             }
+            },
+            "configSnippets": {
+            "uriSnippets": [
+                {
+                "directives": [
+                    {
+                    "directive": "app_protect_security_log",
+                    "args": [
+                        "/etc/app_protect/conf/log_default.json",
+                        "syslog:server=10.138.0.5:5144"
+                    ]
+                    }
+                ]
+                }
+            ]
             }
         }
         }
